@@ -1,6 +1,6 @@
 const playerPointsSpan = document.querySelector('.player_points');
 const compPointsSpan = document.querySelector('.comp_points');
-
+const choicesSection = document.querySelector('.choices');
 const optionsButtons = document.querySelectorAll('.options button');
 const playerChoiceSpan = document.querySelector('.player_choice');
 const compChoiceSpan = document.querySelector('.comp_choice');
@@ -25,8 +25,7 @@ function playerSelect(e) {
     optionsButtons.forEach((button) => button.classList.remove("active"));
     playerChoice = e.target.dataset.option;
     e.target.classList.add("active");
-
-console.log("player choice:" , playerChoice);
+    resetGameButton.classList.add("active");
     compSelect();
 }
 
@@ -37,10 +36,35 @@ function compSelect(){
     
     compChoice = availableCompChoices[randomIndex];
 
-    console.log("comp choice: ", compChoice);
+    checkResult()
 }
 
 
+function checkResult(){
+    let result = "";
+    if(playerChoice == "ROCK" && compChoice === "SCISSORS" 
+        || playerChoice == "PAPPER" && compChoice === "ROCK" 
+        || playerChoice == "SCISSORS" && compChoice === "PAPER"){
+            result = "You won!";
+            playerPoints++;
+            playerPointsSpan.innerHTML = playerPoints;
+        }
+
+        else if(playerChoice == compChoice){
+            result = "DRAW!"
+        }
+        else {
+            result = "You lost!";
+            compPoints++;
+            compPointsSpan.innerHTML = compPoints;
+        }
+
+        choicesSection.classList.add("active");
+        playerChoiceSpan.innerHTML = playerChoice;
+        compChoiceSpan.innerHTML = compChoice;
+        resultText.innerHTML = result;
+
+}
 
 
 
