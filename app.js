@@ -16,7 +16,7 @@ let compChoice = "";
 function setGame(){
     playerPointsSpan.innerHTML = playerPoints;
     compPointsSpan.innerHTML = compPoints;
-    resultText.innerHTML = resultText.innerHTML = "Make your choice: ";
+    resultText.innerHTML = "Make your choice: ";
     resetGameButton.classList.remove('active');
 }
 
@@ -47,15 +47,18 @@ function checkResult(){
         || playerChoice == "PAPPER" && compChoice === "ROCK" 
         || playerChoice == "SCISSORS" && compChoice === "PAPER"){
             result = "You won!";
+            resultText.style.backgroundColor = "green";
             playerPoints++;
             playerPointsSpan.innerHTML = playerPoints;
         }
 
         else if(playerChoice == compChoice){
             result = "DRAW!"
+            resultText.style.backgroundColor = "yellow";
         }
         else {
             result = "You lost!";
+            resultText.style.backgroundColor = "red";
             compPoints++;
             compPointsSpan.innerHTML = compPoints;
         }
@@ -69,6 +72,7 @@ function checkResult(){
 
 function resetScore(){
     choicesSection.classList.remove("active");
+    resultText.style.backgroundColor = "";
     playerPoints = 0;
     compPoints = 0;
     setGame();
