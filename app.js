@@ -16,7 +16,8 @@ let compChoice = "";
 function setGame(){
     playerPointsSpan.innerHTML = playerPoints;
     compPointsSpan.innerHTML = compPoints;
-    resultText.innerHTML = resultText.innerHTML = "Make your choice";
+    resultText.innerHTML = resultText.innerHTML = "Make your choice: ";
+    resetGameButton.classList.remove('active');
 }
 
 window.onload = setGame();
@@ -66,7 +67,13 @@ function checkResult(){
 
 }
 
+function resetScore(){
+    choicesSection.classList.remove("active");
+    playerPoints = 0;
+    compPoints = 0;
+    setGame();
+}
 
-
+resetGameButton.addEventListener("click", resetScore);
 optionsButtons.forEach((button) => button.addEventListener("click", playerSelect));
 
