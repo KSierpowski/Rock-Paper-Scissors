@@ -54,22 +54,26 @@ h1{
 .options button img{
     width: 200px;
     height: 240px;
+    pointer-events: none;  /*jak klikam na img to się nic nie dzieje, tylko button się liczy */
 }
-.options button img:hover{
+.options button:hover{
 transform: scale(1.2);
 }
 .choices{
     font-size: 30px;
+    display: none;
+}
+
+.choices.active{
+    display: block;
 }
 
 .result_text{
     font-size: 40px;
-    background: greenyellow;
     width: 50%;
     text-align: center;
     padding: 10px;
     border-radius: 15px;
-    color: black;
 }
 
 .reset_game{
@@ -79,7 +83,10 @@ transform: scale(1.2);
     padding: 5px 20px;
     border-radius: 10px;
     border:none;
-    
+    display: none;
+}
+.reset_game.active{
+    display: block;
 }
 
 .reset_game:hover{
